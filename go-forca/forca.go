@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"os"
 	"os/exec"
@@ -20,16 +21,13 @@ func init() {
 func main() {
 	vitorias := 0
 	perdas := 0
-	numeroLetras := rand.Intn(2) + 4 // de 4 ~ 6
-	novamente, ganhou := jogarForca(numeroLetras)
+	novamente, ganhou := jogarForca()
 
 	for {
 		if ganhou == true {
 			vitorias++
-			numeroLetras = rand.Intn(11) + 4
 		} else {
 			perdas++
-			numeroLetras = rand.Intn(11) + 4
 		}
 		if novamente == "y" {
 			limparTela()
@@ -37,14 +35,14 @@ func main() {
 			fmt.Printf("    Placar\n")
 			fmt.Printf("  %d: vitorias, %d: perdas\n", vitorias, perdas)
 			fmt.Printf("------------------------\n")
-			novamente, ganhou = jogarForca(numeroLetras)
+			novamente, ganhou = jogarForca()
 		} else if novamente == "n" {
 			break
 		}
 	}
 }
 
-func jogarForca(numeroLetras int) (jogarnovamente string, isGanhador bool) {
+func jogarForca() (jogarnovamente string, isGanhador bool) {
 	estagioMorte := 0
 	chutouUmaLetra := false
 	ganhou := false
@@ -54,10 +52,15 @@ func jogarForca(numeroLetras int) (jogarnovamente string, isGanhador bool) {
 	sublinhado := ""
 	novoSublinhado := ""
 
-	fmt.Printf("F O R C A\n")
+	fmt.Printf("F O R C A - QUE PODE MATAR\n")
 	fmt.Printf("Digite a palavra secreta: ")
 	palavraEscondida, _ := gopass.GetPasswdMasked()
 	palavra := string(palavraEscondida)
+	isUmaLetra, _ := regexp.MatchString("^[a-zA-Z]", palavra)
+	if isUmaLetra == false {
+		fmt.Printf("O que voce digitou nao e uma letra! Tente novamente\n")
+		log.Fatal()
+	}
 	fmt.Printf("O tamanho da palavra e: %v\n", len(palavra))
 
 	for {
@@ -94,14 +97,14 @@ func jogarForca(numeroLetras int) (jogarnovamente string, isGanhador bool) {
 		fmt.Printf("Chute uma letra: ")
 		fmt.Scanln(&chute)
 
-		isALetter, err := regexp.MatchString("^[a-zA-Z]", chute)
+		isUmaLetra, err := regexp.MatchString("^[a-zA-Z]", chute)
 		if err != nil {
 			limparTela()
 			fmt.Printf("Eita aconteceu algo muito errado. Saindo com erro de regex match %v", chute)
 			return
 		}
 
-		if isALetter == false {
+		if isUmaLetra == false {
 			limparTela()
 			fmt.Printf("O que voce digitou nao e uma letra! Tente novamente\n")
 		} else if len(chute) > 1 {
