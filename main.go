@@ -230,9 +230,21 @@ func main() {
 		fmt.Println(i)
 	}
 
+	// LIKE C WHILE
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
+
 	for i := range text {
 		fmt.Println(i)
 	}
+
+	// defer
+	// A defer statement defers the execution of a function until the surrounding function returns.
+	defer fmt.Println("world")
+	fmt.Println("hello")
 
 	// switch
 	// A switch is a conditional statement which evaluates an expression
