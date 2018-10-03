@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"os/exec"
 	"time"
 )
 
@@ -305,4 +306,11 @@ func main() {
 // A solution is to seed rand with Unix time. Try it in the init function:
 func init() {
 	rand.Seed(time.Now().UTC().UnixNano())
+
+	cmd := exec.Command("echo", "Go - Da logica ao jogo")
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err)
+	}
+	fmt.Printf("combined out:\n%s\n", string(out))
 }
