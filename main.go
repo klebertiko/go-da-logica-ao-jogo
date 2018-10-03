@@ -230,7 +230,7 @@ func main() {
 		fmt.Println(i)
 	}
 
-	// LIKE C WHILE
+	// Like C while
 	sum := 1
 	for sum < 1000 {
 		sum += sum
