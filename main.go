@@ -311,6 +311,27 @@ func main() {
 	array := [5]int{76, 77, 78, 79, 80}
 	var slice []int = array[1:4] //creates a slice from a[1] to a[3]
 	fmt.Println(slice)
+
+	// map
+	type Vertex struct {
+		Lat, Long float64
+	}
+
+	var m = map[string]Vertex{
+		"Bell Labs": Vertex{
+			40.68433, -74.39967,
+		},
+		"Google": Vertex{
+			37.42202, -122.08408,
+		},
+	}
+	fmt.Println(m)
+
+	m = map[string]Vertex{
+		"Bell Labs": {40.68433, -74.39967},
+		"Google":    {37.42202, -122.08408},
+	}
+	fmt.Println(m)
 }
 
 // 	Random numbers in Go don’t seem random? Surprise! The rand package defaults to a seed of 1.
