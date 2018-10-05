@@ -46,7 +46,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 	sublinhado := ""
 	novoSublinhado := ""
 
-	fmt.Printf("F O R C A  -  Q U E  M A T A\n")
+	fmt.Printf("F O R C A  -  Q U E  M A T A\n\n")
 	fmt.Printf("Digite a palavra secreta: ")
 	palavraEscondida, _ := gopass.GetPasswdMasked()
 	palavra := string(palavraEscondida)
@@ -55,7 +55,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 		fmt.Printf("O que voce digitou nao e uma letra! Tente novamente\n")
 		log.Fatal()
 	}
-	fmt.Printf("O tamanho da palavra e: %v\n", len(palavra))
+	fmt.Printf("\nO tamanho da palavra e: %v\n\n", len(palavra))
 
 	for {
 		desenharForca(estagioMorte)
@@ -88,7 +88,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 		} else {
 			fmt.Printf("%s\n", novoSublinhado)
 		}
-		fmt.Printf("Chute uma letra: ")
+		fmt.Printf("\nChute uma letra: ")
 		fmt.Scanln(&chute)
 
 		isUmaLetra, err := regexp.MatchString("^[a-zA-Z]", chute)
