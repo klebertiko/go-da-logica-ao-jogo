@@ -59,7 +59,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 
 	for {
 		desenharForca(estagioMorte)
-		if estagioMorte == 7 {
+		if estagioMorte == 6 {
 			fmt.Printf("Eita...o enforcado morreu!\n")
 			fmt.Printf("A palavra que poderia sava-lo era: %s\n", palavra)
 			for {
@@ -166,14 +166,12 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
-		fmt.Printf("      |\n")
 		fmt.Printf("========\n")
 
 	case 1:
 		fmt.Printf("  +---+\n")
 		fmt.Printf("  |   |\n")
 		fmt.Printf("  O   |\n")
-		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
@@ -188,7 +186,6 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
-		fmt.Printf("      |\n")
 		fmt.Printf("========\n")
 
 	case 3:
@@ -196,7 +193,6 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("  |   |\n")
 		fmt.Printf("  O   |\n")
 		fmt.Printf(" /|   |\n")
-		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
@@ -210,7 +206,6 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
-		fmt.Printf("      |\n")
 		fmt.Printf("========\n")
 
 	case 5:
@@ -218,8 +213,7 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("  |   |\n")
 		fmt.Printf("  O   |\n")
 		fmt.Printf(" /|\\  |\n")
-		fmt.Printf("  |   |\n")
-		fmt.Printf("      |\n")
+		fmt.Printf(" /    |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("========\n")
@@ -229,18 +223,6 @@ func desenharForca(estagioMorte int) {
 		fmt.Printf("  |   |\n")
 		fmt.Printf("  O   |\n")
 		fmt.Printf(" /|\\  |\n")
-		fmt.Printf("  |   |\n")
-		fmt.Printf(" /    |\n")
-		fmt.Printf("      |\n")
-		fmt.Printf("      |\n")
-		fmt.Printf("========\n")
-
-	case 7:
-		fmt.Printf("  +---+\n")
-		fmt.Printf("  |   |\n")
-		fmt.Printf("  O   |\n")
-		fmt.Printf(" /|\\  |\n")
-		fmt.Printf("  |   |\n")
 		fmt.Printf(" / \\  |\n")
 		fmt.Printf("      |\n")
 		fmt.Printf("MORREU|\n")
