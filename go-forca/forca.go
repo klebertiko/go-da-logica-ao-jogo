@@ -65,12 +65,12 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 			for {
 				fmt.Printf("Jogar novamente? (s/n) \n")
 				fmt.Scanln(&novamente)
-				isSorN, err := regexp.MatchString("^s|S|n|N", novamente)
+				isSouN, err := regexp.MatchString("^s|S|n|N", novamente)
 				if err != nil {
 					fmt.Printf("Eita aconteceu algo muito errado. Saindo com erro de regex match %v", novamente)
 					return
 				}
-				if isSorN == false {
+				if isSouN == false {
 					fmt.Printf("Voce nao digitou 's' or 'n'! Tente novamente\n")
 				} else if len(novamente) > 1 {
 					fmt.Printf("Voce digitou mais de uma letra! Tente novamente\n")
@@ -131,12 +131,12 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 				for {
 					fmt.Printf("Jogar novamente? (s/n) \n")
 					fmt.Scanln(&novamente)
-					isSorN, err := regexp.MatchString("^s|S|n|N", novamente)
+					isSouN, err := regexp.MatchString("^s|S|n|N", novamente)
 					if err != nil {
 						fmt.Printf("Eita aconteceu algo muito errado. Saindo com erro de regex match %v", novamente)
 						return
 					}
-					if isSorN == false {
+					if isSouN == false {
 						fmt.Printf("Voce nao digitou 's' or 'n'! Tente novamente\n")
 					} else if len(novamente) > 1 {
 						fmt.Printf("Voce digitou mais do que uma letra! Tente novamente\n")
