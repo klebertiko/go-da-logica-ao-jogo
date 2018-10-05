@@ -3,20 +3,14 @@ package main
 import (
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
 	"os/exec"
 	"regexp"
 	"runtime"
 	"strings"
-	"time"
 
 	"github.com/howeyc/gopass"
 )
-
-func init() {
-	rand.Seed(time.Now().UnixNano()) // para numeros aleatorios
-}
 
 func main() {
 	vitorias := 0
@@ -29,7 +23,7 @@ func main() {
 		} else {
 			perdas++
 		}
-		if novamente == "y" {
+		if novamente == "s" {
 			limparTela()
 			fmt.Printf("------------------------\n")
 			fmt.Printf("    Placar\n")
@@ -52,7 +46,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 	sublinhado := ""
 	novoSublinhado := ""
 
-	fmt.Printf("F O R C A - QUE PODE MATAR\n")
+	fmt.Printf("F O R C A  -  Q U E  M A T A\n")
 	fmt.Printf("Digite a palavra secreta: ")
 	palavraEscondida, _ := gopass.GetPasswdMasked()
 	palavra := string(palavraEscondida)
@@ -69,19 +63,19 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 			fmt.Printf("Eita...o enforcado morreu!\n")
 			fmt.Printf("A palavra que poderia sava-lo era: %s\n", palavra)
 			for {
-				fmt.Printf("Jogar novamente? (y/n) \n")
+				fmt.Printf("Jogar novamente? (s/n) \n")
 				fmt.Scanln(&novamente)
-				isYorN, err := regexp.MatchString("^y|Y|n|N", novamente)
+				isSorN, err := regexp.MatchString("^s|S|n|N", novamente)
 				if err != nil {
 					fmt.Printf("Eita aconteceu algo muito errado. Saindo com erro de regex match %v", novamente)
 					return
 				}
-				if isYorN == false {
-					fmt.Printf("Voce nao digitou 'y' or 'n'! Tente novamente\n")
+				if isSorN == false {
+					fmt.Printf("Voce nao digitou 's' or 'n'! Tente novamente\n")
 				} else if len(novamente) > 1 {
 					fmt.Printf("Voce digitou mais de uma letra! Tente novamente\n")
-				} else if strings.ToLower(novamente) == "y" {
-					return "y", false
+				} else if strings.ToLower(novamente) == "s" {
+					return "s", false
 				} else {
 					return "n", false
 				}
@@ -135,19 +129,19 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 				fmt.Printf("-= P A R A B E N S =-\n")
 				fmt.Printf("Voce ganhou! A palavra era: %s\n", palavra)
 				for {
-					fmt.Printf("Jogar novamente? (y/n) \n")
+					fmt.Printf("Jogar novamente? (s/n) \n")
 					fmt.Scanln(&novamente)
-					isYorN, err := regexp.MatchString("^y|Y|n|N", novamente)
+					isSorN, err := regexp.MatchString("^s|S|n|N", novamente)
 					if err != nil {
 						fmt.Printf("Eita aconteceu algo muito errado. Saindo com erro de regex match %v", novamente)
 						return
 					}
-					if isYorN == false {
-						fmt.Printf("Voce nao digitou 'y' or 'n'! Tente novamente\n")
+					if isSorN == false {
+						fmt.Printf("Voce nao digitou 's' or 'n'! Tente novamente\n")
 					} else if len(novamente) > 1 {
 						fmt.Printf("Voce digitou mais do que uma letra! Tente novamente\n")
-					} else if strings.ToLower(novamente) == "y" {
-						return "y", true
+					} else if strings.ToLower(novamente) == "s" {
+						return "s", true
 					} else {
 						return "n", true
 					}
