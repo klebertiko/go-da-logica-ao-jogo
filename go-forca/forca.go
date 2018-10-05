@@ -61,7 +61,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 		desenharForca(estagioMorte)
 		if estagioMorte == 6 {
 			fmt.Printf("Eita...o enforcado morreu!\n")
-			fmt.Printf("A palavra que poderia sava-lo era: %s\n", palavra)
+			fmt.Printf("\nA palavra que poderia sava-lo era: %s\n", palavra)
 			for {
 				fmt.Printf("Jogar novamente? (s/n) \n")
 				fmt.Scanln(&novamente)
@@ -127,7 +127,7 @@ func jogarForca() (jogarnovamente string, isGanhador bool) {
 			if ganhou == true {
 				limparTela()
 				fmt.Printf("-= P A R A B E N S =-\n")
-				fmt.Printf("Voce ganhou! A palavra era: %s\n", palavra)
+				fmt.Printf("\nVoce ganhou! A palavra era: %s\n", palavra)
 				for {
 					fmt.Printf("Jogar novamente? (s/n) \n")
 					fmt.Scanln(&novamente)
